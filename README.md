@@ -19,7 +19,7 @@ __1. Create a Grafana Cloud account__
 
 __2. Configure Atlas Environment__
 
-* Log-on to your [Atlas account](http://cloud.mongodb.com) (using the MongoDB SA preallocated Atlas credits system) and navigate to your SA project
+* Log-on to your [Atlas account](http://cloud.mongodb.com) and navigate to your project
 * Ensure you have at least one Atlas Cluster running or create a new __M10__ one with default specifications 
 
 __3. Configure AWS Environment__
@@ -27,8 +27,8 @@ __3. Configure AWS Environment__
 * Launch (create) a new EC2 instance with the following settings (use defaults settings for the rest of the fields):
   * __AMI Type__: Amazon Linux 2 AMI (HVM), SSD Volume Type
   * __Instance Type__: t2.medium
-  * __Add Tags__: _be sure to set the 3 specific tags ('Name', 'owner', 'expire-on','purpose') on your instance as per the [MongoDB AWS Usage Guidelines](https://wiki.corp.mongodb.com/display/DEVOPSP/AWS+Reaping+Policies)_ to avoid your instance from being prematurely reaped
-  * __Security Group__: Create a new security group which has an inbound rule to allow SSH only on port 22 and TCP on port 9090 from source 0.0.0.0/0
+  * __Add Tags__: be sure to set the 3 specific tags ('Name', 'owner', 'expire-on','purpose') on your instance as per the [MongoDB AWS Usage Guidelines](https://wiki.corp.mongodb.com/display/DEVOPSP/AWS+Reaping+Policies) to avoid your instance from being prematurely reaped
+  * __Security Group__: create a new security group which has an inbound rule to allow SSH only on port 22 and TCP on port 9090 from source 0.0.0.0/0
 * When prompted, choose to use your existing key pair or create a new key pair (typically named similar to 'firstname.lastname'). If creating a new key pair, be sure to click the button to __Download Key Pair__ and store the key somewhere safe on your laptop.
 *  Once the AWS instance is running, find it in the AWS Console __instances__ list, select it, and in the description section near the bottom of the AWS Console locate the __IPv4 Public IP__ field and make a note of its value
 * Now go to the __Atlas Console__ and in the Security tab, add a new __IP Whitelist__ entry for the IP address you just captured, to allow the AWS instance to connect to your Atlas cluster. Ensure 0.0.0.0/0 is __NOT__ whitelisted since this is a requirement for configuring the Atlas-Prometheus integration
@@ -48,10 +48,10 @@ __1. Enable Atlas-Prometheus integration__
 
 Copy the generated snippet. We will use it to configure prometheus server later
 
-__2. Install, configure en start Prometheus Server in your AWS EC2 instance__
+__2. Install, configure en start Prometheus server in your AWS EC2 instance__
 * In the AWS Console __instances__ list select your AWS instance, press the __Connect button__ and follow the instructions to SSH into this instance from a new terminal window on your laptop
 * Go to [Prometheus Downloads page](https://prometheus.io/download/) and copy the link for the latest Prometheus release
-* In the previous SSH terminal session, run the following commands to download and extract Prometheus Server:
+* In the previous SSH terminal session, run the following commands to download and extract Prometheus server:
 
   ```bash
   wget https://github.com/prometheus/prometheus/releases/download/v2.35.0-rc0/prometheus-2.35.0-rc0.linux-amd64.tar.gz
@@ -62,7 +62,7 @@ __2. Install, configure en start Prometheus Server in your AWS EC2 instance__
 * Edit prometheus.yml and add the snippet copied from the previous step in the  “scrape_configs:” section:
 ![prometheusConfig](img/prometheusConfig.png "prometheusConfig")
 Set the proper value for the password fields
-* Start Prometheus Server by executing:
+* Start Prometheus server by executing:
   ```bash
   nohup ./prometheus > prometheus.log &
   ```
@@ -73,7 +73,7 @@ Set the proper value for the password fields
   ![prometheusTargets](img/prometheusTargets.png "prometheusTargets")
 
 __3. Connect Grafana to Prometheus__
-* Open your Grafana cloud account and go to Configration -> Datasources:
+* Open your Grafana Cloud account and go to Configration -> Datasources:
 
 ![grafana1](img/grafana1.png "grafana1")
 
