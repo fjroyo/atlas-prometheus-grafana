@@ -3,8 +3,8 @@
 __Ability to integrate Atlas metics into Prometheus and chart them using Grafana__
 
 __SA Maintainer__: [Francisco Royo](mailto:francisco.royo@mongodb.com) <br/>
-__Time to setup__: XX mins <br/>
-__Time to execute__: XX mins <br/>
+__Time to setup__: 15 mins <br/>
+__Time to execute__: 30 mins <br/>
 
 ---
 ## Description
@@ -23,11 +23,11 @@ __2. Configure Atlas Environment__
 * Ensure you have at least one Atlas Cluster running or create a new __M10__ one with default specifications 
 
 __3. Configure AWS Environment__
-* Using your MongoDB 'Solution Architects' [AWS pre-existing account](https://wiki.corp.mongodb.com/display/10GEN/SA+AWS+Access+-+Updated+Nov+2020), log on to the [AWS console](http://sa.aws.mongodb.com/) and near the top right hand side of the AWS Console, __change the region__ to match the same AWS region as you created the Atlas cluster in
+* Using your MongoDB 'Solution Architects' [AWS pre-existing account](https://wiki.corp.mongodb.com/display/10GEN/SA+AWS+Access+-+Updated+Nov+2020), log on to the __AWS console__ and near the top right hand side of the AWS Console, __change the region__ to match the same AWS region as you created the Atlas cluster in
 * Launch (create) a new EC2 instance with the following settings (use defaults settings for the rest of the fields):
   * __AMI Type__: Amazon Linux 2 AMI (HVM), SSD Volume Type
   * __Instance Type__: t2.medium
-  * __Add Tags__: be sure to set the 3 specific tags ('Name', 'owner', 'expire-on','purpose') on your instance as per the [MongoDB AWS Usage Guidelines](https://wiki.corp.mongodb.com/display/DEVOPSP/AWS+Reaping+Policies) to avoid your instance from being prematurely reaped
+  * __Add Tags__: be sure to set the 3 specific tags ('name', 'owner', 'expire-on','purpose') on your instance as per the [MongoDB AWS Usage Guidelines](https://wiki.corp.mongodb.com/display/DEVOPSP/AWS+Reaping+Policies) to avoid your instance from being prematurely reaped
   * __Security Group__: create a new security group which has an inbound rule to allow SSH only on port 22 and TCP on port 9090 from source 0.0.0.0/0
 * When prompted, choose to use your existing key pair or create a new key pair (typically named similar to 'firstname.lastname'). If creating a new key pair, be sure to click the button to __Download Key Pair__ and store the key somewhere safe on your laptop.
 *  Once the AWS instance is running, find it in the AWS Console __instances__ list, select it, and in the description section near the bottom of the AWS Console locate the __IPv4 Public IP__ field and make a note of its value
@@ -60,7 +60,9 @@ __2. Install, configure en start Prometheus server in your AWS EC2 instance__
   ```
   __Note__ change the URL in the wget command for the proper one you just copied in the previous step and the version number in the tar and cd commands to the ones that matches with your download
 * Edit prometheus.yml and add the snippet copied from the previous step in the  “scrape_configs:” section:
+
 ![prometheusConfig](img/prometheusConfig.png "prometheusConfig")
+
 Set the proper value for the password fields
 * Start Prometheus server by executing:
   ```bash
@@ -92,8 +94,14 @@ __4. Import some sample dashboards__
 * Click on upload JSON file
 * Select the JSON fille: you can use the following templates:
   * Dashboard with Hardware metrics: [Hardware metrics](dashboardTemplates/HardwareMetrics.json)
-  * Dashboard with Hardware metrics: [Mongo metrics](dashboardTemplates/MongoMetrics.json)
+  * Dashboard with MongoDB metrics: [Mongo metrics](dashboardTemplates/MongoMetrics.json)
 * Click import
 
 ---
 ## Measurement
+
+* After importing the previous dashboards, they will appear in Grafana's dashboard section and thet will look like:
+
+![hwDashboard](img/hwDashboard.png "hwDashboard")
+
+![mongoDashboard](img/mongoDashboard.png "mongoDashboard")
