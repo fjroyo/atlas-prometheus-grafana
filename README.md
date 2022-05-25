@@ -100,7 +100,7 @@ __4. Import some sample dashboards__
 ---
 ## Measurement
 
-After importing the previous dashboards, they will appear in Grafana's dashboard section and thet will look like:
+After importing the previous dashboards, they will appear in Grafana's dashboard section and they will look like:
 
 ![hwDashboard](img/hwDashboard.png "hwDashboard")
 
