@@ -67,7 +67,7 @@ Set the proper value for the password fields
   nohup ./prometheus > prometheus.log &
   ```
 * Check that Prometheus is successfully scrapping metrics from Atlas:
-  * Open Prometheus web UI (http://<your EC2 instance ip address>:9090/) 
+  * Open Prometheus web UI (http://your_EC2_instance_ip_address:9090/) 
   * Click on Status -> Targets and check all end points related to your Altas project are in UP state:
   
   ![prometheusTargets](img/prometheusTargets.png "prometheusTargets")
@@ -78,7 +78,7 @@ __3. Connect Grafana to Prometheus__
 ![grafana1](img/grafana1.png "grafana1")
 
 * Click on Add Datasource
-* Click on Prometheus Datasource and configure URL to http://<your EC2 instance ip address>:9090:
+* Click on Prometheus Datasource and configure URL to http://your_EC2_instance_ip_address:9090:
 
 ![grafana2](img/grafana2.png "grafana2")
 
