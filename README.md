@@ -48,7 +48,7 @@ __1. Enable Atlas-Prometheus integration__
 
 Copy the generated snippet. We will use it to configure prometheus server later
 
-__2. Install, configure en start Prometheus server in your AWS EC2 instance__
+__2. Install, configure and start Prometheus server in your AWS EC2 instance__
 * In the AWS Console __instances__ list select your AWS instance, press the __Connect button__ and follow the instructions to SSH into this instance from a new terminal window on your laptop
 * Go to [Prometheus Downloads page](https://prometheus.io/download/) and copy the link for the latest Prometheus release
 * In the previous SSH terminal session, run the following commands to download and extract Prometheus server:
