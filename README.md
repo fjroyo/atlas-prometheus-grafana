@@ -27,7 +27,7 @@ __3. Configure AWS Environment__
 * Launch (create) a new EC2 instance with the following settings (use defaults settings for the rest of the fields):
   * __AMI Type__: Amazon Linux 2 AMI (HVM), SSD Volume Type
   * __Instance Type__: t2.medium
-  * __Add Tags__: be sure to set the 3 specific tags ('name', 'owner', 'expire-on','purpose') on your instance as per the [MongoDB AWS Usage Guidelines](https://wiki.corp.mongodb.com/display/DEVOPSP/AWS+Reaping+Policies) to avoid your instance from being prematurely reaped
+  * __Add Tags__: be sure to set the 3 specific tags ('name', 'owner', 'expire-on','purpose') on your instance as per the [MongoDB AWS Usage Guidelines](https://wiki.corp.mongodb.com/display/10GEN/SA+AWS+Access+-+Updated+Nov+2020) to avoid your instance from being prematurely reaped
   * __Security Group__: create a new security group which has an inbound rule to allow SSH only on port 22 and TCP on port 9090 from source 0.0.0.0/0
 * When prompted, choose to use your existing key pair or create a new key pair (typically named similar to 'firstname.lastname'). If creating a new key pair, be sure to click the button to __Download Key Pair__ and store the key somewhere safe on your laptop.
 *  Once the AWS instance is running, find it in the AWS Console __instances__ list, select it, and in the description section near the bottom of the AWS Console locate the __IPv4 Public IP__ field and make a note of its value
